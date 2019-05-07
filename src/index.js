@@ -1,10 +1,10 @@
 import React from 'react';
 import { render } from 'react-dom';
-import './src/index.css';
-import './src/styles.scss';
-import messi1 from './src/messi1.gif';
-import messi2 from './src/messi2.png';
-import messi3 from './src/messi3.jpg';
+import './index.css';
+import './styles.scss';
+import messi1 from './messi1.gif';
+import messi2 from './messi2.png';
+import messi3 from './messi3.jpg';
 
 
 
