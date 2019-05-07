@@ -1,5 +1,16 @@
+# Webpack Starter Repo
 
-- Setup scripts and node modules:
+This is a starter for any new webpack project with the main loaders / plugins that I would want. This starter comes with the following:
+- Sass
+- React (including Babel)
+- Webpack Dev Server
+- HtmlWebpackPlugin (for changes to your `index.html` file in `/src`)
+
+To get started, clone the repo and type `npm i` in the terminal. Use `npm run build` to build your project and `npm run dev` to develop. See your code at `localhost:9000`. 
+
+## Scripts and Config Files:
+
+### Scripts
 
 ```sh
 # Webpack and Webpack CLI
@@ -8,7 +19,78 @@ npm i webpack webpack-cli --save-dev
 # Babel-loader plus necessary presets and babel-core
 npm i babel-loader @babel/core @babel/preset-env @babel/preset-react --save-dev
 
+# React
+npm i react react-dom --save
 
+# Style (CSS & SCSS) and Image Loaders
+npm i style-loader css-loader sass-loader node-sass url-loader --save-dev
+
+# Webpack Dev Server
+npm i webpack-dev-server --save-dev
+
+# HtmlWebpackPlugin
+npm i --save-dev html-webpack-plugin
+```
+
+### Webpack Config
+
+```js
+const path = require("path");
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+
+module.exports = {
+    entry: './index.js',
+    output: {
+        filename: 'main.js',
+        path: path.resolve(__dirname, "dist")
+    },
+    devServer: {
+        contentBase: path.join(__dirname, 'dist'),
+        port: 9000
+    },
+    plugins: [
+        new HtmlWebpackPlugin({
+            filename: 'index.html',
+            template: path.resolve(__dirname, 'src/index.html')
+        })
+    ],
+    module: {
+        rules: [
+            {
+                test: /\.js$/,
+                exclude: /(node_modules)/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['@babel/preset-env', '@babel/preset-react']
+                    }
+                }
+            },
+            {
+                test: /\.(scss|css)$/,
+                use: [
+                    { loader: 'style-loader'},
+                    { loader: 'css-loader' },
+                    { loader: 'sass-loader' }
+                ]
+            },
+            {
+                test: /\.(png|jpg|jpeg|bmp|gif)$/,
+                use: [
+                    { loader: 'url-loader' }
+                ]
+            }
+        ]
+    } 
+}
+```
+
+### Babel Config
+
+```js
+{
+    "presets": ["@babel/preset-env", "@babel/preset-react"]
+}
 ```
 
 ## Webpack Step-by-Step Setup
@@ -78,13 +160,13 @@ module.exports = {
 }
 ```
 
-### 3. React
+### 3. React (and React DOM)
 
 ```sh
 npm i react react-dom --save
 ```
 
-### 4. Add Style and Image Loaders
+### 4. Style (CSS & SCSS) and Image Loaders
 
 - Install the necessary loaders:
 
@@ -112,7 +194,7 @@ npm i style-loader css-loader sass-loader node-sass url-loader --save-dev
 
 - **Note**: the order of the loaders for the CSS and SCSS is **not** arbitrary. Notice that you can use both - you really don't need to look for a CSS file if you won't have one but I included it here just in case there's a CSS file.
 
-### 5. Add Dev Server
+### 5. Webpack Dev Server
 
 - Install the `webpack-dev-server` (more info here: [https://webpack.js.org/configuration/dev-server/](https://webpack.js.org/configuration/dev-server/))
 
@@ -137,7 +219,7 @@ devServer: {
 },
 ```
 
-### 6. Add HtmlWebpackPlugin
+### 6. HtmlWebpackPlugin
 
 - install the HtmlWebpackPlugin plugin:
 
