@@ -35,6 +35,7 @@ npm i --save-dev html-webpack-plugin
 ### Webpack Config
 
 ```js
+// webpack.config.js
 const path = require("path");
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
@@ -88,6 +89,7 @@ module.exports = {
 ### Babel Config
 
 ```js
+// .babelrc
 {
     "presets": ["@babel/preset-env", "@babel/preset-react"]
 }
