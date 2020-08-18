@@ -5,6 +5,7 @@ This is a starter for any new webpack project with the main loaders / plugins th
 - React (including Babel)
 - Webpack Dev Server
 - HtmlWebpackPlugin (for changes to your `index.html` file in `/src`)
+- Material UI
 
 To get started, clone the repo and type `npm i` in the terminal. Use `npm run build` to build your project and `npm run dev` to develop. See your code at `localhost:9000`. 
 

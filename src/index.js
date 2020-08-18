@@ -2,11 +2,17 @@ import React from 'react';
 import { render } from 'react-dom';
 import './css/styles.scss';
 
+import MuiComponent from './components/MuiComponent';
+
 const App = () => {
+    const stuff = 5;
+    console.log('hey man')
+
+    
     return (
-        <main>
-            <h1>Main App</h1>
-        </main>
+        <div>
+            <MuiComponent />
+        </div>
     )
 }
 
